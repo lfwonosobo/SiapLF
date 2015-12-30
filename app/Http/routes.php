@@ -16,7 +16,6 @@ Route::get('/', ['as' => 'home', 'uses' => 'FrontController@index']);
 
 Route::get('/', ['as' => 'home', 'uses' => 'LoginController@auth']);
 */
-Route::get('/', 'LoginController@auth');
 
 Route::get('/lihatpoll', 'FrontController@polling');
 Route::post('/tambahpoll', 'FrontController@tambahpoll');

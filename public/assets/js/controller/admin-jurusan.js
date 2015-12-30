@@ -1,10 +1,10 @@
-angular.module('admin').controller('kelas', function($scope, $http, $filter, $timeout, baseURL) {
+angular.module('admin').controller('jurusan', function($scope, $http, $filter, $timeout, baseURL) {
     $scope.data = {};
     $scope.alerts = [];
     $scope.closeAlert = function(index) {
         $scope.alerts.splice(index, 1);
     };
-    $http.get(baseURL.url('api/kelas')).success(function(data) {
+    $http.get(baseURL.url('api/jurusan')).success(function(data) {
         $scope.data = data;
         $scope.totalItems = $scope.data.length;
         $scope.currentPage = 1;
@@ -27,9 +27,9 @@ angular.module('admin').controller('kelas', function($scope, $http, $filter, $ti
     })
     $scope.delete = function(id) {
         if (confirm("Anda yakin untuk menghapus data?") === true) {
-            $http.delete('http://laravel.dev/admin/kelas/' + id).success(function(data) {
+            $http.delete('http://tugasakhir.dev/admin/jurusan/' + id).success(function(data) {
                 if (data.success) {
-                    $http.get(baseURL.url('api/kelas')).success(function(data) {
+                    $http.get(baseURL.url('api/jurusan')).success(function(data) {
                         $scope.data = data;
                         $scope.alerts.push({type: 'success', msg: 'Data Berhasil Dihapus'});
                         $timeout(function() {
@@ -41,16 +41,16 @@ angular.module('admin').controller('kelas', function($scope, $http, $filter, $ti
         }
     }
 });
-angular.module('admin').controller('kelascreate', function($scope, $http, $filter, $timeout, baseURL) {
+angular.module('admin').controller('jurusancreate', function($scope, $http, $filter, $timeout, baseURL) {
     $scope.data = {};
     $scope.alerts = [];
     $scope.closeAlert = function(index) {
         $scope.alerts.splice(index, 1);
     };
     $scope.submit = function() {
-        $http.post(baseURL.url('admin/kelas'), $scope.data).success(function(data) {
+        $http.post(baseURL.url('admin/jurusan'), $scope.data).success(function(data) {
             if (data.success) {
-                window.location.replace(baseURL.url('admin/kelas'));
+                window.location.replace(baseURL.url('admin/jurusan'));
             }
         }).error(function(e,status) {
             if (status === 422) {
@@ -65,21 +65,21 @@ angular.module('admin').controller('kelascreate', function($scope, $http, $filte
         });
     }
 });
-angular.module('admin').controller('kelasedit', function($scope, $http, $filter, $timeout, baseURL) {
+angular.module('admin').controller('jurusanedit', function($scope, $http, $filter, $timeout, baseURL) {
     $scope.data = {};
     $scope.alerts = [];
     $scope.closeAlert = function(index) {
         $scope.alerts.splice(index, 1);
     };
     var id = $filter('_uriseg')(6);
-    $http.get(baseURL.url('api/kelas/') + id).success(function(data) {
+    $http.get(baseURL.url('api/jurusan/') + id).success(function(data) {
         $scope.data = data;
     })
     $scope.submit = function(id) {
-        $http.put(baseURL.url('admin/kelas/') + id, $scope.data).success(function(data) {
+        $http.put(baseURL.url('admin/jurusan/') + id, $scope.data).success(function(data) {
             if (data.success) {
                 $timeout(function() {
-                    window.location.replace(baseURL.url('admin/kelas'));
+                    window.location.replace(baseURL.url('admin/jurusan'));
                 }, 3000);
             }
         }).error(function(e,status) {

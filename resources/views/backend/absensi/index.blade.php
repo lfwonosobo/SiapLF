@@ -51,8 +51,8 @@
                                         </select>
                                     </div>
                                     <div class="col-md-2">
-                                        <select name="kelas" class="form-control" ng-model="data.kelas">
-                                            <option ng-repeat="unit in kelas" ng-selected="unit.id == data.kelas" value="<%unit.id%>"><% unit.label %></option>
+                                        <select name="jurusan" class="form-control" ng-model="data.jurusan">
+                                            <option ng-repeat="unit in jurusan" ng-selected="unit.id == data.jurusan" value="<%unit.id%>"><% unit.label %></option>
                                         </select>
                                     </div>
                                     <div class="col-md-2">
@@ -84,8 +84,8 @@
                                         </select>
                                     </div>
                                     <div class="col-md-2">
-                                        <select name="kelas" class="form-control" ng-model="data.kelas">
-                                            <option ng-repeat="unit in kelas" ng-selected="unit.id == data.kelas" value="<%unit.id%>"><% unit.label %></option>
+                                        <select name="jurusan" class="form-control" ng-model="data.jurusan">
+                                            <option ng-repeat="unit in jurusan" ng-selected="unit.id == data.jurusan" value="<%unit.id%>"><% unit.label %></option>
                                         </select>
                                     </div>
                                     <div class="col-md-2">

@@ -16,15 +16,15 @@
 @endsection
 @section('content')
 <div class="col-md-9" ng-app="siswa">
-    <div ng-controller="kelas">
+    <div ng-controller="jurusan">
         <div class='row'>
             <div class="form-group">
                 <form class="form-horizontal" role="form" name="agendaForm" ng-submit="submit()" enctype="multipart/form-data">
-                    <label class="col-sm-2 control-label" for="form-field-1"> Kelas </label>
+                    <label class="col-sm-2 control-label" for="form-field-1"> jurusan </label>
                     <div class="col-sm-5">
-                        <select name="id_kelas" class="form-control" ng-model="data.id_kelas">
-                            <option value="">Pilih Kelas</option>
-                            <option ng-repeat="unit in kelas" value="<%unit.id%>"><% unit.label %></option>
+                        <select name="id_jurusan" class="form-control" ng-model="data.id_jurusan">
+                            <option value="">Pilih jurusan</option>
+                            <option ng-repeat="unit in jurusan" value="<%unit.id%>"><% unit.label %></option>
                         </select>
                     </div>
                     <div class="col-sm-5">

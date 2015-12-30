@@ -51,7 +51,7 @@
                                         <button class="btn btn-success" type="submit">
                                             Save
                                         </button>
-                                        <a href='{{route('admin.kelas.index')}}' class="btn btn-blue">Back</a>
+                                        <a href='{{route('admin.jurusan.index')}}' class="btn btn-blue">Back</a>
                                     </div>
                                 </div>
                             </form>

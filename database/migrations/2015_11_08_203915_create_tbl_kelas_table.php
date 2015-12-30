@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateTblKelasTable extends Migration {
+class CreateTbljurusanTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,10 @@ class CreateTblKelasTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tbl_kelas', function(Blueprint $table)
+		Schema::create('tbl_jurusan', function(Blueprint $table)
 		{
-			$table->integer('id_kelas', true);
-			$table->string('nama_kelas', 10);
+			$table->integer('id_jurusan', true);
+			$table->string('nama_jurusan', 10);
 			$table->string('tahun_ajaran', 15);
 		});
 	}
@@ -28,7 +28,7 @@ class CreateTblKelasTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tbl_kelas');
+		Schema::drop('tbl_jurusan');
 	}
 
 }

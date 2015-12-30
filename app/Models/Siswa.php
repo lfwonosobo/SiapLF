@@ -9,11 +9,11 @@ class Siswa extends Model {
     //
     protected $table = 'tbl_siswa';
     protected $primaryKey = 'id_siswa';
-    protected $fillable = array('nama_siswa', 'nis', 'id_kelas');
+    protected $fillable = array('nama_siswa', 'nis', 'id_jurusan');
     public $timestamps = false;
 
-    public function kelas() {
-        return $this->belongsTo('App\Models\Kelas', 'id_kelas');
+    public function jurusan() {
+        return $this->belongsTo('App\Models\jurusan', 'id_jurusan');
     }
 
     public function absensi() {

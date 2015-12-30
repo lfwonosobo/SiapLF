@@ -9,7 +9,7 @@
         <!-- start: PAGE HEADER -->
         <div class="row">
             <div class="col-sm-12">
-{!! Breadcrumbs::render('siswa',$kelas_id); !!}
+{!! Breadcrumbs::render('siswa',$jurusan_id); !!}
                 <div class="page-header">
                     <h1>
                         {{$title}} <br />
@@ -29,7 +29,7 @@
                     </div>
                     <div class="panel-body">
                         <alert ng-repeat="alert in alerts" type="<%alert.type%>" close="closeAlert($index)"><%alert.msg%></alert>
-                        <a class="btn btn-green add-row" href="{{route('admin.kelas.{id}.siswa.create', $kelas_id)}}">
+                        <a class="btn btn-green add-row" href="{{route('admin.jurusan.{id}.siswa.create', $jurusan_id)}}">
                             Add New <i class="fa fa-plus"></i>
                         </a>
                         <div class="pull-right col-sm-5">
@@ -39,8 +39,8 @@
                             <thead>
                                 <tr>
                                     <th>NIS</th>
-                                    <th>Nama Kelas</th>
-                                    <th>Kelas</th>
+                                    <th>Nama jurusan</th>
+                                    <th>jurusan</th>
                                     <th>Tahun Ajaran</th>
                                     <th class="hidden-xs center">Aksi Data</th>
                                     <th></th>
@@ -50,11 +50,11 @@
                                 <tr ng-repeat="status in data| filter:paginate">
                                     <td><% status['nis'] %></td>
                                     <td><% status['nama_siswa'] %></td>
-                                    <td><% status['kelas']['nama_kelas'] %></td>
-                                    <td><% status['kelas']['tahun_ajaran'] %></td>
+                                    <td><% status['jurusan']['nama_jurusan'] %></td>
+                                    <td><% status['jurusan']['tahun_ajaran'] %></td>
                                     <td class="center">
                                         <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                            <a data-original-title="Edit" data-placement="top" class="btn btn-xs btn-teal tooltips" href="{{url('admin/kelas/'.$kelas_id)}}/siswa/<% status['id_siswa']%>/edit"><i class="fa fa-edit"></i></a>
+                                            <a data-original-title="Edit" data-placement="top" class="btn btn-xs btn-teal tooltips" href="{{url('admin/jurusan/'.$jurusan_id)}}/siswa/<% status['id_siswa']%>/edit"><i class="fa fa-edit"></i></a>
                                             <a data-original-title="Remove" data-placement="top" class="btn btn-xs btn-bricky tooltips" href="#" ng-click="delete(status['id_siswa'])"><i class="fa fa-times fa fa-white"></i></a>
                                         </div>
                                         <div class="visible-xs visible-sm hidden-md hidden-lg">
@@ -64,7 +64,7 @@
                                                 </a>
                                                 <ul class="dropdown-menu pull-right" role="menu">
                                                     <li role="presentation">
-                                                        <a href="{{url('admin/kelas/'.$kelas_id.'/')}}/<% status['id_data']%>edit" tabindex="-1" role="menuitem">
+                                                        <a href="{{url('admin/jurusan/'.$jurusan_id.'/')}}/<% status['id_data']%>edit" tabindex="-1" role="menuitem">
                                                             <i class="fa fa-edit"></i> Edit
                                                         </a>
                                                     </li>

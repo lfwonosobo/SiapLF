@@ -19,7 +19,7 @@
                     <ul class="nav nav-tabs tab-bricky" id="myTab">
                         <li class="active">
                             <a data-toggle="tab" href="#panel_tab2_example1">
-                                <i class="green fa fa-home"></i> {{$title}} {{$fulltanggal}} Kelas {{$siswa->first()->kelas->nama_kelas}}
+                                <i class="green fa fa-home"></i> {{$title}} {{$fulltanggal}} jurusan {{$siswa->first()->jurusan->nama_jurusan}}
                             </a>
                         </li>
                     </ul>
@@ -28,7 +28,7 @@
                             <alert ng-repeat="alert in alerts" type="<%alert.type%>" close="closeAlert($index)"><% alert.msg %></alert>
                             <form action="{{route('guru.absensi.store')}}" method="post">
                                 <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                                <input type="hidden" name="kelas" value="{{$siswa->first()->id_kelas}}" />
+                                <input type="hidden" name="jurusan" value="{{$siswa->first()->id_jurusan}}" />
                                 <input type="hidden" name="tanggal" value="{{$tanggal}}" />
                                 <input type="hidden" name="bulan" value="{{$bulan}}" />
                                 <input type="hidden" name="tahun" value="{{$tahun}}" />

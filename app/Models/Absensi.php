@@ -10,18 +10,18 @@ class Absensi extends Model {
     //
     protected $table = 'tbl_absensi';
     protected $primaryKey = 'id_absensi';
-    protected $fillable = array('id_siswa', 'id_kelas', 'absen', 'tanggal', 'bulan', 'tahun');
+    protected $fillable = array('id_siswa', 'id_jurusan', 'absen', 'tanggal', 'bulan', 'tahun');
     public $timestamps = false;
 
-    public function kelas() {
-        return $this->belongsTo('App\Models\Kelas', 'id_kelas');
+    public function jurusan() {
+        return $this->belongsTo('App\Models\jurusan', 'id_jurusan');
     }
 
     public function siswa() {
         return $this->belongsTo('App\Models\Siswa', 'id_siswa');
     }
 
-    public function scopeGetAbsen($query, $kelas, $bulan, $tahun) {
+    public function scopeGetAbsen($query, $jurusan, $bulan, $tahun) {
         $kampret = DB::select(DB::raw(
                                 "SELECT s.`nama_siswa` , s.`nis` , 
                         IFNULL(h.hadir,0) AS hadir,
@@ -81,7 +81,7 @@ class Absensi extends Model {
                             WHERE  tahun = ".$tahun." AND bulan = ".$bulan."
                             GROUP BY id_siswa
                         ) AS t ON t.id_siswa = s.id_siswa
-                        WHERE id_kelas=".$kelas
+                        WHERE id_jurusan=".$jurusan
                 
         ));
         return $kampret;

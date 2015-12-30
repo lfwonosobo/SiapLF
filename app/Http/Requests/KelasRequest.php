@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class KelasRequest extends Request {
+class jurusanRequest extends Request {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -22,14 +22,14 @@ class KelasRequest extends Request {
      */
     public function rules() {
         return [
-            'nama_kelas' => 'required',
+            'nama_jurusan' => 'required',
             'tahun_ajaran' => 'required',
         ];
     }
 
     public function messages() {
         return [
-            'nama_kelas.required' => 'Nama Kelas Diperlukan!',
+            'nama_jurusan.required' => 'Nama jurusan Diperlukan!',
             'tahun_ajaran.required' => 'Tahun Ajaran Diperlukan!',
         ];
     }

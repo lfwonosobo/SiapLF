@@ -4,8 +4,8 @@ angular.module('admin').controller('siswa', function($scope, $http, $filter, $ti
     $scope.closeAlert = function(index) {
         $scope.alerts.splice(index, 1);
     };
-    var kelas_id = $filter('_uriseg')(6);
-    $http.get(baseURL.url('api/kelas/') + kelas_id + '/siswa').success(function(data) {
+    var jurusan_id = $filter('_uriseg')(6);
+    $http.get(baseURL.url('api/jurusan/') + jurusan_id + '/siswa').success(function(data) {
         $scope.data = data;
         $scope.totalItems = $scope.data.length;
         $scope.currentPage = 1;
@@ -28,9 +28,9 @@ angular.module('admin').controller('siswa', function($scope, $http, $filter, $ti
     })
     $scope.delete = function(id) {
         if (confirm("Anda yakin untuk menghapus data?") === true) {
-            $http.delete(baseURL.url('admin/kelas/') + kelas_id + '/siswa/' + id).success(function(data) {
+            $http.delete(baseURL.url('admin/jurusan/') + jurusan_id + '/siswa/' + id).success(function(data) {
                 if (data.success) {
-                    $http.get(baseURL.url('api/kelas/') + kelas_id + '/siswa').success(function(data) {
+                    $http.get(baseURL.url('api/jurusan/') + jurusan_id + '/siswa').success(function(data) {
                         $scope.data = data;
                         $scope.alerts.push({type: 'success', msg: 'Data Berhasil Dihapus'});
                         $timeout(function() {
@@ -49,15 +49,15 @@ angular.module('admin').controller('siswacreate', function($scope, $http, $filte
         $scope.alerts.splice(index, 1);
     };
     var id = $filter('_uriseg')(6);
-    $scope.data['id_kelas'] = id;
-    $scope.kelas = {};
-    $http.get(baseURL.url('api/kelasdropdown')).success(function(data) {
-        $scope.kelas = data;
+    $scope.data['id_jurusan'] = id;
+    $scope.jurusan = {};
+    $http.get(baseURL.url('api/jurusandropdown')).success(function(data) {
+        $scope.jurusan = data;
     });
     $scope.submit = function() {
-        $http.post(baseURL.url('admin/kelas/') + id + '/siswa', $scope.data).success(function(data) {
+        $http.post(baseURL.url('admin/jurusan/') + id + '/siswa', $scope.data).success(function(data) {
             if (data.success) {
-                window.location.replace(baseURL.url('admin/kelas/') + $scope.data['id_kelas'] + '/siswa');
+                window.location.replace(baseURL.url('admin/jurusan/') + $scope.data['id_jurusan'] + '/siswa');
             }
         }).error(function(e, status) {
             if (status === 422) {
@@ -78,20 +78,20 @@ angular.module('admin').controller('siswaedit', function($scope, $http, $filter,
     $scope.closeAlert = function(index) {
         $scope.alerts.splice(index, 1);
     };
-    var kelas_id = $filter('_uriseg')(6);
+    var jurusan_id = $filter('_uriseg')(6);
     var id = $filter('_uriseg')(8);
     $http.get(baseURL.url('api/siswa/') + id).success(function(data) {
         $scope.data = data;
     })
-    $scope.kelas = {};
-    $http.get(baseURL.url('api/kelasdropdown')).success(function(data) {
-        $scope.kelas = data;
+    $scope.jurusan = {};
+    $http.get(baseURL.url('api/jurusandropdown')).success(function(data) {
+        $scope.jurusan = data;
     });
     $scope.submit = function(id) {
-        $http.put(baseURL.url('admin/kelas/') + kelas_id + '/siswa/' + id, $scope.data).success(function(data) {
+        $http.put(baseURL.url('admin/jurusan/') + jurusan_id + '/siswa/' + id, $scope.data).success(function(data) {
             if (data.success) {
                 $timeout(function() {
-                    window.location.replace(baseURL.url('admin/kelas/') + $scope.data['id_kelas'] + '/siswa');
+                    window.location.replace(baseURL.url('admin/jurusan/') + $scope.data['id_jurusan'] + '/siswa');
                 }, 3000);
             }
         }).error(function(e, status) {

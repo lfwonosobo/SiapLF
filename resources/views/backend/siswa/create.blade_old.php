@@ -31,11 +31,11 @@
                                                    <alert ng-repeat="alert in alerts" type="<%alert.type%>" close="closeAlert($index)"><% alert.msg %></alert>
                              <form class="form-horizontal" role="form" name="agendaForm" ng-submit="submit()" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label" for="form-field-1"> Kelas </label>
+                                    <label class="col-sm-2 control-label" for="form-field-1"> jurusan </label>
                                     <div class="col-sm-9">
-                                        <select name="id_kelas" class="form-control" ng-model="data.id_kelas">
-                                            <option value="">Pilih Kelas</option>
-                                            <option ng-repeat="unit in kelas" ng-selected="unit.id == {{$id}}" value="<%unit.id%>"><% unit.label %></option>
+                                        <select name="id_jurusan" class="form-control" ng-model="data.id_jurusan">
+                                            <option value="">Pilih jurusan</option>
+                                            <option ng-repeat="unit in jurusan" ng-selected="unit.id == {{$id}}" value="<%unit.id%>"><% unit.label %></option>
                                         </select>
                                     </div>
                                 </div>
@@ -58,7 +58,7 @@
                                         <button class="btn btn-success" type="submit">
                                             Save
                                         </button>
-                                        <a href='{{route('admin.kelas.{id}.siswa.index',$id)}}' class="btn btn-blue">Back</a>
+                                        <a href='{{route('admin.jurusan.{id}.siswa.index',$id)}}' class="btn btn-blue">Back</a>
                                     </div>
                                 </div>
                             </form>

@@ -22,7 +22,7 @@ class SiswaRequest extends Request {
      */
     public function rules() {
         return [
-            'id_kelas' => 'required',
+            'id_jurusan' => 'required',
             'nis' => 'required|numeric|unique:tbl_siswa,nis,'.Request::get('id_siswa').',id_siswa',
             'nama_siswa' => 'required',
         ];
@@ -30,7 +30,7 @@ class SiswaRequest extends Request {
 
     public function messages() {
         return [
-            'id_kelas.required' => 'Kelas Diperlukan!',
+            'id_jurusan.required' => 'jurusan Diperlukan!',
             'nis.required' => 'Nomor induk siswa Diperlukan!',
             'nis.numeric' => 'Nomor induk siswa harus berupa angka!',
             'nama_siswa.required' => 'Nama Siswa Diperlukan!',

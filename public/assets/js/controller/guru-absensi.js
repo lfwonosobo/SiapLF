@@ -5,7 +5,7 @@
  */
 angular.module('admin').controller('absensi', function($scope, $http, $filter, $timeout, baseURL) {
     $scope.data = {};
-    $scope.kelas = {};
+    $scope.jurusan = {};
     $scope.date = [];
     $scope.tahun = [];
     $scope.bulan = [
@@ -23,7 +23,7 @@ angular.module('admin').controller('absensi', function($scope, $http, $filter, $
         {'id': 12, 'label': 'Desember'},
     ];
     var dateobj = new Date();
-    $scope.data['kelas'] = 1;
+    $scope.data['jurusan'] = 1;
     $scope.data['bulan'] = dateobj.getMonth() + 1; // 3  (0 = January, 3 = April)
     $scope.data['tanggal'] = dateobj.getDate();  // 28
     $scope.data['tahun'] = dateobj.getFullYear(); // 6
@@ -36,8 +36,8 @@ angular.module('admin').controller('absensi', function($scope, $http, $filter, $
         var tahun = {'id': t, 'label': t};
         $scope.tahun.push(tahun);
     }
-    $http.get(baseURL.url('api/kelasdropdown')).success(function(data) {
-        $scope.kelas = data;
+    $http.get(baseURL.url('api/jurusandropdown')).success(function(data) {
+        $scope.jurusan = data;
     });
 });
 
@@ -80,7 +80,7 @@ angular.module('admin').controller('absensiedit', function($scope, $http, $filte
     $http.get(baseURL.url('api/absensi/') + id).success(function(data) {
         $scope.data = data;
         $scope.data['nama_siswa'] = data.siswa.nama_siswa;
-        $scope.data['kelas'] = data.kelas.nama_kelas;
+        $scope.data['jurusan'] = data.jurusan.nama_jurusan;
         $scope.data['bulan'] = data.bulan; // 3  (0 = January, 3 = April)
         $scope.data['tanggal'] = data.tanggal  // 28
         $scope.data['tahun'] = data.tahun // 6s

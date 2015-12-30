@@ -19,7 +19,7 @@
                     <ul class="nav nav-tabs tab-bricky" id="myTab">
                         <li class="active">
                             <a data-toggle="tab" href="#panel_tab2_example1">
-                                <i class="green fa fa-home"></i> {{$title}} {{$fulltanggal}} Kelas {{$siswa->first()->kelas->nama_kelas}}
+                                <i class="green fa fa-home"></i> {{$title}} {{$fulltanggal}} jurusan {{$siswa->first()->jurusan->nama_jurusan}}
                             </a>
                         </li>
                     </ul>
@@ -39,7 +39,7 @@
                                     </thead>
                                     <tbody>
                                     @if($siswa)
-                                        <input type="hidden" name="kelas" value="{{$siswa->first()->id_kelas}}" />
+                                        <input type="hidden" name="jurusan" value="{{$siswa->first()->id_jurusan}}" />
                                         @if(count($siswa->first()->absensi) > 0)
                                             @foreach($siswa as $sis)
                                                     <tr>

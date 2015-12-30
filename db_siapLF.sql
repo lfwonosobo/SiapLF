@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `tbl_absensi` (
   `id_absensi` int(10) NOT NULL AUTO_INCREMENT,
   `id_siswa` int(10) NOT NULL,
-  `id_kelas` int(10) NOT NULL,
+  `id_jurusan` int(10) NOT NULL,
   `absen` char(3) NOT NULL,
   `tanggal` int(2) NOT NULL,
   `bulan` int(2) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `tbl_absensi` (
 -- Dumping data for table `tbl_absensi`
 --
 
-INSERT INTO `tbl_absensi` (`id_absensi`, `id_siswa`, `id_kelas`, `absen`, `tanggal`, `bulan`, `tahun`) VALUES
+INSERT INTO `tbl_absensi` (`id_absensi`, `id_siswa`, `id_jurusan`, `absen`, `tanggal`, `bulan`, `tahun`) VALUES
 (1, 312, 9, 'H', 25, 1, 2011),
 (2, 313, 9, 'H', 25, 1, 2011),
 (3, 314, 9, 'H', 25, 1, 2011),
@@ -588,7 +588,7 @@ CREATE TABLE IF NOT EXISTS `tbl_agenda` (
 --
 
 INSERT INTO `tbl_agenda` (`id_agenda`, `tema_agenda`, `isi`, `tgl_mulai`, `tgl_selesai`, `tgl_posting`, `tempat`, `jam`, `keterangan`) VALUES
-(1, 'Penerimaan Raport Semester Ganjil Tahun Ajaran 2010-2011', 'Berakhirnya semester ganjil tahun pelajaran 2010-2011, ditandai dengan pembagian laporan hasil belajar.', '2010-12-23', '2010-12-23', '2010-12-22', 'SMA Negeri 1 Wongsorejo', '07.30 WIB - 12.00 WIB', 'Untuk kelas XI dan XII, pembagian raport dimulai pukul 07.30 WIB. Sedangkan untuk kelas X pada pukul 09.00 WIB. Raport diambil oleh orang tua/wali murid masing-masing.'),
+(1, 'Penerimaan Raport Semester Ganjil Tahun Ajaran 2010-2011', 'Berakhirnya semester ganjil tahun pelajaran 2010-2011, ditandai dengan pembagian laporan hasil belajar.', '2010-12-23', '2010-12-23', '2010-12-22', 'SMA Negeri 1 Wongsorejo', '07.30 WIB - 12.00 WIB', 'Untuk jurusan XI dan XII, pembagian raport dimulai pukul 07.30 WIB. Sedangkan untuk jurusan X pada pukul 09.00 WIB. Raport diambil oleh orang tua/wali murid masing-masing.'),
 (2, 'Peluncuran Website Resmi SMA Negeri 1 Wongsorejo', 'Peluncuran website resmi dari SMA Negeri 1 Wongsorejo, sebagai media informasi dan akademik online untuk pelayanan pendidikan yang lebih baik kepada siswa, orangtua, dan masyarakat pada umumnya semakin meningkat.', '2010-12-23', '2010-12-24', '2010-12-22', 'SMA Negeri 1 Wongsorejo', '07.30 WIB - 12.00 WIB', '-'),
 (3, 'Penyembelihan Hewan Kurban Idul Adha 2010', 'Idul Adha yang biasa disebut lebaran haji atapun lebaran kurban sangat identik dengan penyembelihan hewan kurban. SMA Negeri 1 Wongsorejo tahun ini juga melakukan penyembelihan hewan kurban. Yang rencananya akan dihadiri oleh guru-guru, siswa dan pengurus OSIS.', '2010-11-17', '2010-11-17', '2010-11-15', 'SMA Negeri 1 Wongsorejo', '07.30 WIB - 14.00 WIB', 'Dihadiri oleh guru-guru, siswa dan pengurus OSIS.s'),
 (7, 'Perkemahan Sabtu Minggu', '<p>Perkemahan Sabtu Minggu</p>\n', '2015-02-17', '2015-02-22', '2015-02-17', 'Sekolah', '17:00', '<p>Perkemahan Sabtu Minggu</p>\n');
@@ -819,21 +819,21 @@ INSERT INTO `tbl_jawabanpoll` (`id_jawaban_poll`, `id_soal_poll`, `jawaban`, `co
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_kelas`
+-- Table structure for table `tbl_jurusan`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_kelas` (
-  `id_kelas` int(10) NOT NULL AUTO_INCREMENT,
-  `nama_kelas` varchar(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tbl_jurusan` (
+  `id_jurusan` int(10) NOT NULL AUTO_INCREMENT,
+  `nama_jurusan` varchar(10) NOT NULL,
   `tahun_ajaran` varchar(15) NOT NULL,
-  PRIMARY KEY (`id_kelas`)
+  PRIMARY KEY (`id_jurusan`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
--- Dumping data for table `tbl_kelas`
+-- Dumping data for table `tbl_jurusan`
 --
 
-INSERT INTO `tbl_kelas` (`id_kelas`, `nama_kelas`, `tahun_ajaran`) VALUES
+INSERT INTO `tbl_jurusan` (`id_jurusan`, `nama_jurusan`, `tahun_ajaran`) VALUES
 (1, 'X.1', '2010/2011'),
 (2, 'X.2', '2010/2011'),
 (3, 'X.3', '2010/2011'),
@@ -1002,7 +1002,7 @@ CREATE TABLE IF NOT EXISTS `tbl_pengumuman` (
 --
 
 INSERT INTO `tbl_pengumuman` (`id_pengumuman`, `judul_pengumuman`, `isi`, `tanggal`, `penulis`) VALUES
-(1, 'Pembagian Raport Semester Ganjil Tahun Ajaran 2010-2011', 'Menjelang berakhirnya proses belajar-mengajar di semester ganjil tahun ajaran 2010-2011, maka akan diadakan pembagian hasil belajar/raport pada tanggal 23 Desember 2011 pukul 07.30 WIB.<br>\r\nYang bertempat di SMA Negeri 1 Wongsorejo. Raport diambil oleh orang tua/wali kelas murid masing-masing', '2010-12-22', 'wayansedariasih'),
+(1, 'Pembagian Raport Semester Ganjil Tahun Ajaran 2010-2011', 'Menjelang berakhirnya proses belajar-mengajar di semester ganjil tahun ajaran 2010-2011, maka akan diadakan pembagian hasil belajar/raport pada tanggal 23 Desember 2011 pukul 07.30 WIB.<br>\r\nYang bertempat di SMA Negeri 1 Wongsorejo. Raport diambil oleh orang tua/wali jurusan murid masing-masing', '2010-12-22', 'wayansedariasih'),
 (2, 'Libur Semester Ganjil Tahun Ajaran 2010-2011', 'Libur semester ganjil tahun ajaran 2010-2011 dimulai dari tanggal 24 Desember 2010 sampai dengan tanggal 2 Januari 2011.', '2010-12-22', 'admin'),
 (3, 'Proses Belajar Mengajar di Semester Genap Tahun Ajaran 2010-2011', 'Setelah libur semester ganjil tahun ajaran 2010-2011, proses belajar mengajar di semester genap tahun ajaran 2010-2011 mulai aktif kembali tanggal 3 Januari 2011.', '2010-12-22', 'admin'),
 (4, 'Peresmian dan Launching Website Perdana SMA Negeri 1 Wongsorejo', 'Peresmian dan launching website resmi SMA Negeri 1 Wongsorejo akan diadakan pada hari 23 Desember 2010 pukul 10.00, bertepatan dengan pembagian raport semester ganjil tahun ajaran 2010-2011', '2010-12-22', 'admin'),
@@ -1032,7 +1032,7 @@ CREATE TABLE IF NOT EXISTS `tbl_pesan` (
 
 CREATE TABLE IF NOT EXISTS `tbl_siswa` (
   `id_siswa` int(10) NOT NULL AUTO_INCREMENT,
-  `id_kelas` int(10) NOT NULL,
+  `id_jurusan` int(10) NOT NULL,
   `nis` int(30) NOT NULL,
   `nama_siswa` varchar(150) NOT NULL,
   PRIMARY KEY (`id_siswa`)
@@ -1042,7 +1042,7 @@ CREATE TABLE IF NOT EXISTS `tbl_siswa` (
 -- Dumping data for table `tbl_siswa`
 --
 
-INSERT INTO `tbl_siswa` (`id_siswa`, `id_kelas`, `nis`, `nama_siswa`) VALUES
+INSERT INTO `tbl_siswa` (`id_siswa`, `id_jurusan`, `nis`, `nama_siswa`) VALUES
 (1, 1, 1102, 'M. Fhasa Wijaya'),
 (2, 1, 1192, 'Adry Tyo Bastiar'),
 (3, 1, 1201, 'Aji Dekia Septi Budiana'),

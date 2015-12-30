@@ -19,9 +19,9 @@ class SiswaController extends Controller {
      *
      * @return Response
      */
-    public function index($kelas_id, $id = null) {
+    public function index($jurusan_id, $id = null) {
         //
-        $data['kelas_id'] = $kelas_id;
+        $data['jurusan_id'] = $jurusan_id;
         $data['title'] = 'Menu Siswa';
         return view('backend.siswa.index', $data);
     }
@@ -33,7 +33,7 @@ class SiswaController extends Controller {
      */
     public function apiSiswa($id = NULL) {
         //
-        $data = Siswa::with('kelas')->where('id_kelas', '=', $id)->orderBy('nis')->get();
+        $data = Siswa::with('jurusan')->where('id_jurusan', '=', $id)->orderBy('nis')->get();
         return response()->json($data);
     }
 
@@ -81,9 +81,9 @@ class SiswaController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function edit($kelas_id, $id) {
+    public function edit($jurusan_id, $id) {
         //
-        $data['kelas_id'] = $kelas_id;
+        $data['jurusan_id'] = $jurusan_id;
         $data['title'] = 'Edit Siswa';
         $data['data'] = Siswa::find($id);
         return view('backend.siswa.edit', $data);
@@ -95,7 +95,7 @@ class SiswaController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function update(SiswaRequest $request, $kelas_id, $id) {
+    public function update(SiswaRequest $request, $jurusan_id, $id) {
         //
         $input = $request->all();
         $siswa = Siswa::find($id);
@@ -110,7 +110,7 @@ class SiswaController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($kelas_id, $id) {
+    public function destroy($jurusan_id, $id) {
         //
         $siswa = Siswa::find($id);
         if ($siswa->delete()) {

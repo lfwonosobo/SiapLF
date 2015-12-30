@@ -59,8 +59,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::resource('berita', 'Admin\BeritaController');
     Route::resource('pengumuman', 'Admin\PengumumanController');
     Route::resource('agenda', 'Admin\AgendaController');
-    Route::resource('kelas', 'Admin\KelasController');
-    Route::resource('kelas/{id}/siswa', 'Admin\SiswaController');
+    Route::resource('jurusan', 'Admin\JurusanController');
+    Route::resource('jurusan/{id}/siswa', 'Admin\SiswaController');
     Route::resource('pegawai', 'Admin\PegawaiController');
     Route::resource('polling', 'Admin\PollingController');
     Route::resource('polling/{id}/jawaban', 'Admin\JawabanController');
@@ -102,12 +102,12 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('agenda', 'Admin\AgendaController@apiAgenda');
     Route::get('agenda/{id}', 'Admin\AgendaController@show');
 
-    Route::get('kelas', 'Admin\KelasController@apiKelas');
-    Route::get('kelas/{id}', 'Admin\KelasController@show');
+    Route::get('jurusan', 'Admin\JurusanController@apiJurusan');
+    Route::get('jurusan/{id}', 'Admin\JurusanController@show');
 
-    Route::get('kelas/{id}/siswa', 'Admin\SiswaController@apiSiswa');
+    Route::get('jurusan/{id}/siswa', 'Admin\SiswaController@apiSiswa');
     Route::get('siswa/{id}', 'Admin\SiswaController@show');
-    Route::get('kelasdropdown', 'Admin\KelasController@apiCreateKelas');
+    Route::get('jurusandropdown', 'Admin\JurusanController@apiCreateJurusan');
 
     Route::get('pegawai', 'Admin\PegawaiController@apiPegawai');
     Route::get('pegawai/{id}', 'Admin\PegawaiController@show');

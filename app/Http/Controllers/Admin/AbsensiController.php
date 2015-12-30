@@ -31,7 +31,7 @@ class AbsensiController extends Controller {
     }
 
     public function apiAbsensi($id) {
-        $data = Absensi::where('id_absensi', '=', $id)->with('kelas', 'siswa')->get()->first();
+        $data = Absensi::where('id_absensi', '=', $id)->with('jurusan', 'siswa')->get()->first();
         return response()->json($data);
     }
 
@@ -51,7 +51,7 @@ class AbsensiController extends Controller {
         $data['bulan'] = $request->get('bulan');
         $data['tahun'] = $request->get('tahun');
         $data['fulltanggal'] = date('d F Y', strtotime($data['tanggal'] . '-' . $data['bulan'] . '-' . $data['tahun']));
-        $data['siswa'] = Siswa::with('kelas')->where('id_kelas', '=', $request->get('kelas'))->orderBy('nis')->get();
+        $data['siswa'] = Siswa::with('jurusan')->where('id_jurusan', '=', $request->get('jurusan'))->orderBy('nis')->get();
         $data['title'] = 'Tambah Absensi';
         if ($this->auth->user()->status == 'admin') {
             return View('backend.absensi.create', $data);
@@ -66,18 +66,18 @@ class AbsensiController extends Controller {
      */
     public function store(AbsensiRequest $request) {
         //
-        $input = $request->except('_token', 'kelas', 'tanggal', 'bulan', 'tahun');
-        $kelas = $request->get('kelas');
+        $input = $request->except('_token', 'jurusan', 'tanggal', 'bulan', 'tahun');
+        $jurusan = $request->get('jurusan');
         Absensi::where('tanggal', '=', $request->get('tanggal'))
                 ->where('bulan', '=', $request->get('bulan'))
-                ->where('tahun', '=', $request->get('tahun'))->where('id_kelas', '=', $kelas)
+                ->where('tahun', '=', $request->get('tahun'))->where('id_jurusan', '=', $jurusan)
                 ->delete();
         foreach ($input as $key => $val) {
             $implode = explode('-', $key);
             $siswa = $implode[1];
             $absensi = new Absensi();
             $absensi->id_siswa = $siswa;
-            $absensi->id_kelas = $kelas;
+            $absensi->id_jurusan = $jurusan;
             $absensi->tanggal = $request->get("tanggal");
             $absensi->bulan = $request->get('bulan');
             $absensi->tahun = $request->get('tahun');
@@ -105,7 +105,7 @@ class AbsensiController extends Controller {
                 $query->where('tanggal', '=', $input['tanggal'])
                         ->where('bulan', '=', $input['bulan'])
                         ->where('tahun', '=', $input['tahun']);
-            }])->where('id_kelas', '=', $input['kelas'])->get();
+            }])->where('id_jurusan', '=', $input['jurusan'])->get();
         if ($this->auth->user()->status == 'admin') {
             return View('backend.absensi.show', $data);
         }
@@ -136,7 +136,7 @@ class AbsensiController extends Controller {
      */
     public function update(AbsensiRequest $request, $id) {
         //
-        $input = $request->only('id_siswa', 'id_kelas', 'absen', 'tanggal', 'bulan', 'tahun');
+        $input = $request->only('id_siswa', 'id_jurusan', 'absen', 'tanggal', 'bulan', 'tahun');
         $absensi = Absensi::find($id);
         if ($absensi->update($input)) {
             return response()->json(array('success' => TRUE));

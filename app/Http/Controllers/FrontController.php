@@ -62,7 +62,7 @@ class FrontController extends Controller {
 
     public function showabsensi(Request $request) {
         $input = $request->all();
-        $siswa = Models\Absensi::getAbsen($input['kelas'],$input['bulan'],$input['tahun']);
+        $siswa = Models\Absensi::getAbsen($input['jurusan'],$input['bulan'],$input['tahun']);
         return response()->json($siswa);
     }
 
@@ -72,7 +72,7 @@ class FrontController extends Controller {
     }
 
     public function ambilsiswa($id) {
-        $siswa = Models\Siswa::where('id_kelas', $id)->get();
+        $siswa = Models\Siswa::where('id_jurusan', $id)->get();
         return response()->json($siswa);
     }
 

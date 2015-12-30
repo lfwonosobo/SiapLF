@@ -10,7 +10,7 @@
             <!-- end: RESPONSIVE MENU TOGGLER -->
             <!-- start: LOGO -->
             <a class="navbar-brand" href="{{url()}}">
-                SMA NEGERI 1
+                Siap LF
             </a>
             <!-- end: LOGO -->
         </div>
@@ -51,7 +51,7 @@
                         Dashboard
                     </a>
                 </li>
-                <li class="{{setActive('admin.datastatis')}}">
+                <!--li class="{{setActive('admin.datastatis')}}">
                     <a href="{{route('admin.datastatis.index')}}">
                         Data Statis   
                     </a>
@@ -78,16 +78,16 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="{{setActive('admin.kelas')}} {{setActive('admin.siswa')}} {{setActive('admin.pegawai')}}">
+                </li-->
+                <li class="{{setActive('admin.jurusan')}} {{setActive('admin.siswa')}} {{setActive('admin.pegawai')}}">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown">
                         <span class="selected"></span>
                         Sekolah <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="{{setActive('admin.kelas')}}{{setActive('admin.siswa')}}">
-                            <a href="{{route('admin.kelas.index')}}">
-                                Data Kelas & Siswa
+                        <li class="{{setActive('admin.jurusan')}}{{setActive('admin.siswa')}}">
+                            <a href="{{route('admin.jurusan.index')}}">
+                                Data jurusan & Siswa
                             </a>
                         </li>
                         <li class="{{setActive('admin.pegawai')}}">
@@ -95,7 +95,7 @@
                                 Data Kepegawaian
                             </a>
                         </li>
-                        <li class="{{setActive('admin.alumni')}}">
+                        <!--li class="{{setActive('admin.alumni')}}">
                             <a href="#">
                                 Data Alumni
                             </a>
@@ -121,7 +121,7 @@
                     <a href="{{route('admin.upload.index')}}">
                         Upload
                     </a>
-                </li>
+                </li-->
             </ul>
         </div>
         <!-- end: HORIZONTAL MENU -->

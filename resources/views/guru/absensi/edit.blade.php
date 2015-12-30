@@ -34,9 +34,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label" for="form-field-1"> Kelas </label>
+                                    <label class="col-sm-2 control-label" for="form-field-1"> jurusan </label>
                                     <div class="col-sm-3">
-                                        <input type='text' class='col-sm-10 form-control' name='kelas' ng-model="data.kelas" readonly/>
+                                        <input type='text' class='col-sm-10 form-control' name='jurusan' ng-model="data.jurusan" readonly/>
                                     </div>
                                 </div>
                                 <div class='form-group'>
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label" for="form-field-1"> Kelas </label>
+                                    <label class="col-sm-2 control-label" for="form-field-1"> jurusan </label>
                                     <div class="col-sm-3">
                                         <div class="radio">
                                             <label>

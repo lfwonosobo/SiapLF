@@ -16,7 +16,7 @@ class CreateTblAbsensiTable extends Migration {
 		{
 			$table->integer('id_absensi', true);
 			$table->integer('id_siswa');
-			$table->integer('id_kelas');
+			$table->integer('id_jurusan');
 			$table->char('absen', 3);
 			$table->integer('tanggal');
 			$table->integer('bulan');
